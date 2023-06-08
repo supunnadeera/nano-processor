@@ -67,6 +67,7 @@ COMPONENT Decoder_3_to_8 is
 end COMPONENT;
 
 SIGNAL register_selection:STD_LOGIC_VECTOR (7 downto 0);
+--SIGNAL register_selection:STD_LOGIC_VECTOR (7 downto 0):="00000001";
 
 begin
 
@@ -79,7 +80,7 @@ Decoder_3_to_80 : Decoder_3_to_8
     
 REG0:REG
     Port MAP( data_in=> "0000",
-           data_out=>"0000",
+           data_out=>out_R0,
            reset=> '0' ,
            en=>register_selection(0),
            clock=>clock
@@ -87,7 +88,7 @@ REG0:REG
 
 REG1:REG
     Port MAP( data_in=> data_in,
-           data_out=>out_R0,
+           data_out=>out_R1,
            reset=> '0' ,
            en=>register_selection(1),
            clock=>clock
@@ -95,49 +96,49 @@ REG1:REG
            
 REG2:REG
   Port MAP( data_in=> data_in,
-         data_out=>out_R0,
+         data_out=>out_R2,
          reset=> '0' ,
-         en=>register_selection(1),
+         en=>register_selection(2),
          clock=>clock
          );   
 
 REG3:REG
   Port MAP( data_in=> data_in,
-         data_out=>out_R0,
+         data_out=>out_R3,
          reset=> '0' ,
-         en=>register_selection(1),
+         en=>register_selection(3),
          clock=>clock
          );   
 
 REG4:REG
   Port MAP( data_in=> data_in,
-         data_out=>out_R0,
+         data_out=>out_R4,
          reset=> '0' ,
-         en=>register_selection(1),
+         en=>register_selection(4),
          clock=>clock
          );   
 
 REG5:REG
   Port MAP( data_in=> data_in,
-         data_out=>out_R0,
+         data_out=>out_R5,
          reset=> '0' ,
-         en=>register_selection(1),
+         en=>register_selection(5),
          clock=>clock
          );  
 
 REG6:REG
   Port MAP( data_in=> data_in,
-         data_out=>out_R0,
+         data_out=>out_R6,
          reset=> '0' ,
-         en=>register_selection(1),
+         en=>register_selection(6),
          clock=>clock
          );   
 
 REG7:REG
   Port MAP( data_in=> data_in,
-         data_out=>out_R0,
+         data_out=>out_R7,
          reset=> '0' ,
-         en=>register_selection(1),
+         en=>register_selection(7),
          clock=>clock
          );     
            

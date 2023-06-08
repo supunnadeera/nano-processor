@@ -32,8 +32,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity processor is
-    Port ( Clock : in STD_LOGIC;
-           Reset : in STD_LOGIC);
+    Port ( 
+    Clock : in STD_LOGIC;
+    temp_out_R0 : out STD_LOGIC_VECTOR (3 downto 0);
+    temp_out_R1 : out STD_LOGIC_VECTOR (3 downto 0);
+    temp_out_R2 : out STD_LOGIC_VECTOR (3 downto 0);
+    temp_out_R3 : out STD_LOGIC_VECTOR (3 downto 0);
+    temp_out_R4 : out STD_LOGIC_VECTOR (3 downto 0);
+    temp_out_R5 : out STD_LOGIC_VECTOR (3 downto 0);
+    temp_out_R6 : out STD_LOGIC_VECTOR (3 downto 0);          
+    temp_out_R7 : out STD_LOGIC_VECTOR (3 downto 0);
+    Reset : in STD_LOGIC
+    );
 end processor;
 
 architecture Behavioral of processor is
@@ -57,12 +67,7 @@ COMPONENT InstructionDecorder is
          
 end COMPONENT;
 
-COMPONENT Counter is
-    Port ( Dir : in STD_LOGIC;
-           Res : in STD_LOGIC;
-           Clk : in STD_LOGIC;
-           Q : out STD_LOGIC_VECTOR (2 downto 0));
-end COMPONENT;
+
 
 COMPONENT MUX_2_3bit is
     Port ( A : in STD_LOGIC_VECTOR (2 downto 0);
@@ -79,7 +84,12 @@ COMPONENT MUX_2_4bit is
        F : out STD_LOGIC_VECTOR (3 downto 0));
 end COMPONENT;
 
-
+COMPONENT Counter is
+    Port ( data_in : in STD_LOGIC_VECTOR (2 downto 0);
+           data_out : out STD_LOGIC_VECTOR (2 downto 0);
+           reset : in STD_LOGIC;
+           clock: in STD_LOGIC);
+end COMPONENT;
 
 COMPONENT register_bank is
     Port ( clock : in STD_LOGIC;
@@ -130,16 +140,24 @@ COMPONENT MUX_8_4bit is
 end COMPONENT;
 
 --counter
-SIGNAL memory_select,counter_in : STD_LOGIC_VECTOR (2 downto 0);
+SIGNAL memory_select: STD_LOGIC_VECTOR (2 downto 0);
+SIGNAL counter_in : STD_LOGIC_VECTOR (2 downto 0):="000";
 
 --ROM
 SIGNAL instruction : STD_LOGIC_VECTOR (11 downto 0);
 
 -- Instruction decoder
 SIGNAL register_enable : STD_LOGIC_VECTOR (2 downto 0);
-SIGNAL load_select,operation,jump_flag :STD_LOGIC;
-SIGNAL register_select_0,register_select_1,address_to_jump : STD_LOGIC_VECTOR (2 downto 0);
+--SIGNAL operation : STD_LOGIC_VECTOR (1 downto 0);
+SIGNAL load_select :STD_LOGIC;
+SIGNAL jump_flag :STD_LOGIC;
+SIGNAL operation :STD_LOGIC;
+SIGNAL register_select_0 : STD_LOGIC_VECTOR (2 downto 0);
+SIGNAL register_select_1 : STD_LOGIC_VECTOR (2 downto 0);
+SIGNAL address_to_jump : STD_LOGIC_VECTOR (2 downto 0);
 SIGNAL immidiate_value : STD_LOGIC_VECTOR (3 downto 0);
+
+
 --3bit adder
 SIGNAL adder3bit_out : STD_LOGIC_VECTOR (2 downto 0);
 
@@ -154,21 +172,40 @@ SIGNAL adder_subtrctor_overflow,adder_subtrctor_zero :STD_LOGIC;
 SIGNAL register_data_in : STD_LOGIC_VECTOR (3 downto 0);
 SIGNAL R0_out,R1_out,R2_out,R3_out,R4_out,R5_out,R6_out,R7_out : STD_LOGIC_VECTOR (3 downto 0);
 
---
+--clock
+--SIGNAL Clk : std_logic := '0';
+
 begin
 
 program_counter:Counter
-    PORT MAP(
-    Dir =>'1',
-    Res =>Reset,
-    Clk=>Clock,
-    Q => memory_select
-    );
+
+    Port MAP( 
+       data_in=> counter_in,
+       data_out=>memory_select,
+       reset=> Reset ,
+       clock=>clock
+       );
+
+adder_3bit0:adder_3bit
+    Port MAP( A =>memory_select,
+             B => "001",
+             SUM =>counter_in
+            );
+            
+MUX_2_3bit_0: MUX_2_3bit
+       Port MAP( 
+           A =>adder3bit_out,
+           B =>address_to_jump,
+           S =>jump_flag,
+           F =>counter_in
+        );
+        
 program_ROM:ROM
      Port MAP( 
         address=>memory_select,
         data=>instruction
     );
+    
 instruction_decoder:InstructionDecorder
      Port Map(Instruction=>instruction,
          Register_Enable =>register_enable,
@@ -182,19 +219,7 @@ instruction_decoder:InstructionDecorder
          Operation => operation  
       );
       
-adder_3bit0:adder_3bit
-    Port MAP( A =>memory_select,
-             B => "001",
-             SUM =>adder3bit_out
-            );
-            
-MUX_2_3bit_0: MUX_2_3bit
-       Port MAP( 
-           A =>adder3bit_out,
-           B =>address_to_jump,
-           S =>jump_flag,
-           F =>counter_in
-        );
+
 
 MUX_2_4bit_0: MUX_2_4bit
        Port MAP( 
@@ -252,7 +277,17 @@ Adder_subtractor_4bit_0: Adder_subtractor_4bit
              C_OUT =>adder_subtrctor_overflow,
              C_IN =>'0',
              Zero=>adder_subtrctor_zero,
-             SUB =>operation
+             SUB =>'0'
       );
-                  
+      
+
+           temp_out_R0 <=R0_out;  
+           temp_out_R1 <=R1_out;  
+           temp_out_R2 <=R2_out;  
+           temp_out_R3 <=R3_out;  
+           temp_out_R4 <=R4_out;  
+           temp_out_R5 <=R5_out;  
+           temp_out_R6 <=R6_out;            
+           temp_out_R7 <=R7_out;  
+           
 end Behavioral;

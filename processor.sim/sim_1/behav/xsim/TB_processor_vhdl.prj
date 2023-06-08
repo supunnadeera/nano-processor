@@ -1,0 +1,22 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../processor.srcs/sources_1/new/Adder_subtractor_4bit.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/Counter.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/D_FF.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/Decoder_2_to_4.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/Decoder_3_to_8.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/FA.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/HA.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/InstructionDecorder.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/MUX_2_3bit.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/MUX_2_4bit.vhd" \
+"../../../../processor.srcs/sources_1/new/MUX_8_4bit.vhd" \
+"../../../../processor.srcs/sources_1/imports/new/REG.vhd" \
+"../../../../processor.srcs/sources_1/new/ROM.vhd" \
+"../../../../processor.srcs/sources_1/new/adder_3bit.vhd" \
+"../../../../processor.srcs/sources_1/new/processor.vhd" \
+"../../../../processor.srcs/sources_1/new/register_bank.vhd" \
+"../../../../processor.srcs/sim_1/new/TB_processor.vhd" \
+
+# Do not sort compile order
+nosort

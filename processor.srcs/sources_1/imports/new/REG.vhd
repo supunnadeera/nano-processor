@@ -45,7 +45,9 @@ COMPONENT D_FF
        Res : in STD_LOGIC;
        Clk : in STD_LOGIC;
 --       Qbar : out STD_LOGIC;
+        en: in STD_LOGIC;
        Q : out STD_LOGIC
+       
        );
 END COMPONENT;
 
@@ -58,6 +60,7 @@ PORT MAP(
         Q=>data_out(0),
         Res=>reset,
 --            Qbar =>not data_out(0),
+        en=>en,
         Clk=>clock
 
 );
@@ -67,6 +70,7 @@ PORT MAP(
         Q=>data_out(1),
         Res=>reset,
 --            Qbar =>not data_out(0),
+        en=>en,
         Clk=>clock
 
 );
@@ -76,6 +80,7 @@ PORT MAP(
         Q=>data_out(2),
         Res=>reset,
 --            Qbar =>not data_out(0),
+        en=>en,
         Clk=>clock
 
 );
@@ -85,6 +90,7 @@ PORT MAP(
         Q=>data_out(3),
         Res=>reset,
 --            Qbar =>not data_out(0),
+        en=>en,
         Clk=>clock
 
 );

@@ -18,12 +18,18 @@ end InstructionDecorder;
 architecture Behavioral of InstructionDecorder is
  
 
+
 begin
- Register_Enable <= Instruction(11 downto 9);
- Load_Select <= Instruction(8);
- Immidiate_Value <= Instruction(7 downto 4);
- Register_Select_1<= Instruction(6 downto 4);
- Register_Select_2<= Instruction(3 downto 1);
- Operation <= Instruction(0);
+     Register_Enable <= Instruction(9 downto 7);
+
+     Immidiate_Value <= Instruction(3 downto 0);
+     
+     Register_Select_1<= Instruction(9 downto 7);
+     Register_Select_2<= Instruction(6 downto 4);
+     
+     Operation <= '1' when (Instruction(11 downto 10) = "01") else '0';
+     
+     Load_Select<= '0' when (Instruction(3 downto 0) = "0000") else '1';
+     
 
 end Behavioral;

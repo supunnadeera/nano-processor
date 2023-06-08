@@ -41,16 +41,23 @@ architecture Behavioral of ROM is
 type rom_type is array (0 to 7) of std_logic_vector(11 downto 0);
  
  signal ROM_array : rom_type := (
-                --rn[3] ls[1] val[0] r1[3] r2[3] add/sub [0]
-                "01000000",--
-                "1111001",--1
-                "0100100",--2
-                "0110000",--3
-                "0011001",--4
-                "0010010",--5
-                "0000010",--6
-                "1111000"--7
-            );
+        --mov r1 001
+         "101110000001",
+         --mov r2 001
+         "111100000001",
+         --add r1 , r2
+         "100110100010",
+         --mov r1 001
+         "100110100000",
+         --mov r1 001
+         "100110100011",
+         --mov r1 001
+         "100110100000",
+         --mov r1 001
+         "100010000001",
+         --mov r1 001
+         "100010000111"
+          );
 
 begin
    data <= ROM_array(to_integer(unsigned(address)));  

@@ -1,0 +1,22 @@
+0.6
+2018.2
+Jun 14 2018
+20:41:02
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sim_1/new/TB_processor.vhd,1686208489,vhdl,,,,tb_processor,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/Counter.vhd,1686220725,vhdl,,,,counter,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/D_FF.vhd,1686212672,vhdl,,,,d_ff,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/Decoder_2_to_4.vhd,1685582644,vhdl,,,,decoder_2_to_4,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/Decoder_3_to_8.vhd,1685582644,vhdl,,,,decoder_3_to_8,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/FA.vhd,1685584676,vhdl,,,,fa,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/HA.vhd,1684550092,vhdl,,,,ha,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/InstructionDecorder.vhd,1686219194,vhdl,,,,instructiondecorder,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/MUX_2_3bit.vhd,1686219664,vhdl,,,,mux_2_3bit,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/MUX_2_4bit.vhd,1686102212,vhdl,,,,mux_2_4bit,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/REG.vhd,1686212023,vhdl,,,,reg,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/imports/new/Slow_Clk.vhd,1686122937,vhdl,,,,slow_clk,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/new/Adder_subtractor_4bit.vhd,1686101717,vhdl,,,,adder_subtractor_4bit,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/new/MUX_8_4bit.vhd,1686113529,vhdl,,,,mux_8_4bit,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/new/ROM.vhd,1686221034,vhdl,,,,rom,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/new/adder_3bit.vhd,1686119848,vhdl,,,,adder_3bit,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/new/processor.vhd,1686220958,vhdl,,,,processor,,,,,,,,
+C:/Users/94762/stuff/Notes/computer_organization/niman/lab3to7/processor/processor.srcs/sources_1/new/register_bank.vhd,1686218602,vhdl,,,,register_bank,,,,,,,,

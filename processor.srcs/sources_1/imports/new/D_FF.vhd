@@ -27,6 +27,7 @@ entity D_FF is
            Res : in STD_LOGIC;
            Clk : in STD_LOGIC;
            Q : out STD_LOGIC;
+           en: in STD_LOGIC;
            Qbar : out STD_LOGIC);
 end D_FF;
 
@@ -35,13 +36,17 @@ architecture Behavioral of D_FF is
 begin
     process(Clk) begin
         if(rising_edge(Clk)) then
-            if Res = '1' then
-                Q <= '0';
-                Qbar <= '1';
-            else
-                Q <= D;
-                Qbar <= NOT D;
+            if en = '1' then
+                if Res = '1' then
+                    Q <= '0';
+                    Qbar <= '1';
+                else
+                    Q <= D;
+                    Qbar <= NOT D;
+                end if;
             end if;
         end if;
     end process;
+    
+    
 end Behavioral;

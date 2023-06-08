@@ -45,7 +45,7 @@ begin
 
 process (A, B, S)
 begin
-    if S = '1' then
+    if S = '0' then
         F <= A;
     else
         F <= B;
